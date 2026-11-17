@@ -30,8 +30,11 @@ Después visita `http://localhost:4173`.
 
 ## Siguiente entrega
 
-1. Autenticación y roles: administrador, técnico y consulta.
-2. API y base de datos de tickets.
-3. Conexión OAuth a Google Drive para leer y actualizar el archivo autorizado.
-4. Registro de cambios y detección de conflictos de edición.
+La definición funcional acordada está en [`docs/alcance-inicial.md`](docs/alcance-inicial.md).
+
+1. Bandeja de pendientes por depurar y asignación de técnicos.
+2. Vista móvil de técnico: llegada, salida y evidencias.
+3. API y base de datos de tickets, sucursales y bitácora.
+4. Conexión OAuth a Google Drive para leer y actualizar el archivo autorizado.
+5. Registro de cambios, detección de conflictos y notificaciones por WhatsApp.
 
