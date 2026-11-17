@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mesa de ayuda técnica de Sicurezza" />
+    <title>Sicurezza | Mesa de ayuda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#inicio" aria-label="Sicurezza inicio">
+          <span class="brand-mark">S</span>
+          <span><strong>Sicurezza</strong><small>Mesa de ayuda</small></span>
+        </a>
+        <nav class="navigation" aria-label="Navegación principal">
+          <a class="nav-item active" href="#inicio"><span>▦</span> Inicio</a>
+          <a class="nav-item" href="#tickets"><span>◉</span> Incidencias <b id="open-count">0</b></a>
+          <a class="nav-item" href="#sucursales"><span>⌖</span> Sucursales</a>
+          <a class="nav-item" href="#equipos"><span>▣</span> Equipos</a>
+          <a class="nav-item" href="#reportes"><span>▤</span> Reportes</a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="sync-mini"><i></i><span>Archivo del cliente<br /><strong>Conexión pendiente</strong></span></div>
+          <div class="user"><span class="avatar">EC</span><span>Edgar Chucuan<small>Administrador</small></span></div>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div><p class="eyebrow">Operación técnica</p><h1 id="inicio">Buenos días, Edgar</h1></div>
+          <div class="top-actions"><span class="today" id="today"></span><button class="notification" aria-label="Notificaciones">♢<b>3</b></button><button class="primary" id="new-ticket">+ Nueva incidencia</button></div>
+        </header>
+
+        <section class="metrics" aria-label="Resumen de incidencias">
+          <article class="metric-card"><div class="metric-icon blue">◉</div><div><span>Incidencias abiertas</span><strong id="metric-open">0</strong><small>requieren seguimiento</small></div></article>
+          <article class="metric-card"><div class="metric-icon red">!</div><div><span>Críticas</span><strong id="metric-critical">0</strong><small>atención prioritaria</small></div></article>
+          <article class="metric-card"><div class="metric-icon amber">✓</div><div><span>Atendidas este mes</span><strong id="metric-resolved">0</strong><small>pendientes de cierre</small></div></article>
+          <article class="metric-card"><div class="metric-icon teal">⌖</div><div><span>Sucursales monitoreadas</span><strong>116</strong><small>en 18 plazas</small></div></article>
+        </section>
+
+        <section class="workspace">
+          <section class="tickets-panel" id="tickets">
+            <div class="section-heading"><div><p class="eyebrow">Seguimiento</p><h2>Incidencias recientes</h2></div><button class="link-button" id="clear-filters">Limpiar filtros</button></div>
+            <div class="filters"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar tienda, sucursal o detalle" /></label><select id="system-filter"><option value="">Todos los sistemas</option><option>CCTV</option><option>Alarma</option><option>Antenas EAS</option><option>Internet</option><option>Botón de pánico</option></select><select id="priority-filter"><option value="">Todas las prioridades</option><option>Crítica</option><option>Alta</option><option>Media</option><option>Baja</option></select></div>
+            <div class="ticket-list" id="ticket-list"></div>
+          </section>
+
+          <aside class="right-panel">
+            <section class="sync-card">
+              <div class="sync-heading"><span class="sync-icon">↻</span><div><p>Sincronización</p><h2>Archivo del cliente</h2></div><span class="status-pill pending">Pendiente</span></div>
+              <p>Conecta el archivo de Google Drive para comparar cambios y actualizar únicamente las celdas autorizadas.</p>
+              <div class="sync-details"><span>Última revisión</span><strong>Aún no conectada</strong><span>Formato detectado</span><strong>Excel en Drive (.xlsx)</strong></div>
+              <button class="secondary" id="connect-drive">Configurar conexión</button>
+              <small id="sync-message">La autorización de Google se agregará desde el servidor.</small>
+            </section>
+            <section class="systems-card" id="equipos"><div class="section-heading compact"><div><p class="eyebrow">Vista rápida</p><h2>Por sistema</h2></div></div><div id="system-summary"></div></section>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="ticket-dialog">
+      <form method="dialog" id="ticket-form">
+        <div class="modal-heading"><div><p class="eyebrow">Nueva incidencia</p><h2>Registrar servicio</h2></div><button class="close" value="cancel" aria-label="Cerrar">×</button></div>
+        <div class="form-grid"><label>Tienda<input name="store" required placeholder="Ej. Kelder" /></label><label>Sucursal<input name="branch" required placeholder="Ej. Casa Blanca" /></label><label>Extensión<input name="extension" placeholder="Ej. 4346" /></label><label>Sistema<select name="system" required><option value="">Selecciona</option><option>CCTV</option><option>Alarma</option><option>Antenas EAS</option><option>Internet</option><option>Botón de pánico</option></select></label><label>Prioridad<select name="priority" required><option>Media</option><option>Crítica</option><option>Alta</option><option>Baja</option></select></label><label>Responsable<input name="owner" placeholder="Sin asignar" /></label><label class="wide">Descripción<textarea name="description" required placeholder="Describe la falla o solicitud de servicio"></textarea></label></div>
+        <div class="modal-actions"><button class="secondary" value="cancel">Cancelar</button><button class="primary" value="default">Crear incidencia</button></div>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
+
